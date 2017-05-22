@@ -243,11 +243,9 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
                             using (WebClient client = new WebClient())
                             {
                                 client.DownloadFile("https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-" + id + ".png", dir + id + ".png");
-                                //FileInfo file = new FileInfo(dir + id + ".png");
-                                //long size = file.Length / 1024;
-                                //conpush("\n[" + ids + "/" + piccount + "]Downloaded: " + id + ", " + size + "KB");
-                                var bytes = Convert.ToInt64(client.ResponseHeaders["Content-Length"]);
-                                conpush("\n[" + ids + "/" + piccount + "]Downloading: " + id + ", " + bytes / 1024 + "KB, PNG");
+                                FileInfo file = new FileInfo(dir + id + ".png");
+                                long size = file.Length / 1024;
+                                conpush("\n[" + ids + "/" + piccount + "]Downloaded: " + id + ", " + size + "KB");
                             }
                         }
                         catch (WebException exp)

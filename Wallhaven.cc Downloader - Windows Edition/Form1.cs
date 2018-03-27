@@ -27,7 +27,7 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             }
         }
         string saveplace = AppDomain.CurrentDomain.BaseDirectory + "wallhaven";
-        int version = 5;
+        int version = 6;
         bool started = false;
         bool stop = false;
         string dir;
@@ -275,16 +275,18 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             System.Net.WebClient wc = new System.Net.WebClient();
             string webData = wc.DownloadString("http://intel777.esy.es/whwdl/version.html");
             int curvers = Int32.Parse(webData);
-            conpush("\nYour version: " + version + "\nAvailable version: " + curvers);
+            //conpush("\nYour version: " + version + "\nAvailable version: " + curvers);
             if (version < curvers)
             {
-
-                conpush("\nUpdate found. Downloading to upd_wld.zip...");
+                conpush("Update Found. Geting changelog...");
+                string changelog = wc.DownloadString("http://intel777.esy.es/whwdl/" + curvers.ToString() + ".html");
+                conpush("Whats new in " + curvers.ToString() + "version: " + changelog);
+                conpush("\nDownloading update to upd_wld.zip...");
                 using (WebClient client = new WebClient())
                 {
                     client.DownloadFile("http://intel777.esy.es/whwdl/" + curvers + ".zip", "upd_wld.zip");
                     var bytes = Convert.ToInt64(client.ResponseHeaders["Content-Length"]);
-                    conpush("\nUpdate Downloaded. File size: " + bytes + "bytes.\nClose program and unzip it to update.");
+                    conpush("\nUpdate Downloaded. File size: " + bytes + "bytes.\nClose program and unzip upd_wld.zip it to update.");
                 }
             }
             else

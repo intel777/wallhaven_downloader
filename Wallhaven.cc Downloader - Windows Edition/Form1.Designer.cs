@@ -93,7 +93,7 @@
             this.logBox.ReadOnly = true;
             this.logBox.Size = new System.Drawing.Size(270, 151);
             this.logBox.TabIndex = 7;
-            this.logBox.Text = "wallhaven.cc downloader\nVersion: 0.5 Public Beta\nDefault save folder: /wallhaven";
+            this.logBox.Text = "wallhaven.cc downloader\nVersion: 0.6 Public Beta\nDefault save folder: /wallhaven";
             this.logBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // comboBox1

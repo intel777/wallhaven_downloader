@@ -278,9 +278,9 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             //conpush("\nYour version: " + version + "\nAvailable version: " + curvers);
             if (version < curvers)
             {
-                conpush("Update Found. Geting changelog...");
+                conpush("\nUpdate Found. Geting changelog...");
                 string changelog = wc.DownloadString("http://intel777.esy.es/whwdl/" + curvers.ToString() + ".html");
-                conpush("Whats new in " + curvers.ToString() + "version: " + changelog);
+                conpush("\nWhats new in " + curvers.ToString() + "version: " + changelog);
                 conpush("\nDownloading update to upd_wld.zip...");
                 using (WebClient client = new WebClient())
                 {

@@ -32,12 +32,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.logBox = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.settingsGroupBox = new System.Windows.Forms.GroupBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -45,13 +45,13 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.logGroupBox = new System.Windows.Forms.GroupBox();
+            this.downloadProgressBar = new System.Windows.Forms.ProgressBar();
+            this.controlGroupBox = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.settingsGroupBox.SuspendLayout();
+            this.logGroupBox.SuspendLayout();
+            this.controlGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -86,15 +86,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // richTextBox1
+            // logBox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(6, 16);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(270, 151);
-            this.richTextBox1.TabIndex = 7;
-            this.richTextBox1.Text = "wallhaven.cc downloader\nVersion: 0.5 Public Beta\nDefault save folder: /wallhaven";
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.logBox.Location = new System.Drawing.Point(6, 16);
+            this.logBox.Name = "logBox";
+            this.logBox.ReadOnly = true;
+            this.logBox.Size = new System.Drawing.Size(270, 151);
+            this.logBox.TabIndex = 7;
+            this.logBox.Text = "wallhaven.cc downloader\nVersion: 0.5 Public Beta\nDefault save folder: /wallhaven";
+            this.logBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // comboBox1
             // 
@@ -145,27 +145,27 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // groupBox1
+            // settingsGroupBox
             // 
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(258, 140);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Settings";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.settingsGroupBox.Controls.Add(this.textBox8);
+            this.settingsGroupBox.Controls.Add(this.textBox7);
+            this.settingsGroupBox.Controls.Add(this.textBox6);
+            this.settingsGroupBox.Controls.Add(this.textBox3);
+            this.settingsGroupBox.Controls.Add(this.checkBox1);
+            this.settingsGroupBox.Controls.Add(this.button4);
+            this.settingsGroupBox.Controls.Add(this.button3);
+            this.settingsGroupBox.Controls.Add(this.textBox2);
+            this.settingsGroupBox.Controls.Add(this.textBox1);
+            this.settingsGroupBox.Controls.Add(this.comboBox1);
+            this.settingsGroupBox.Controls.Add(this.textBox5);
+            this.settingsGroupBox.Controls.Add(this.textBox4);
+            this.settingsGroupBox.Location = new System.Drawing.Point(12, 12);
+            this.settingsGroupBox.Name = "settingsGroupBox";
+            this.settingsGroupBox.Size = new System.Drawing.Size(258, 140);
+            this.settingsGroupBox.TabIndex = 13;
+            this.settingsGroupBox.TabStop = false;
+            this.settingsGroupBox.Text = "Settings";
+            this.settingsGroupBox.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // textBox8
             // 
@@ -241,41 +241,41 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // groupBox2
+            // logGroupBox
             // 
-            this.groupBox2.Controls.Add(this.progressBar1);
-            this.groupBox2.Controls.Add(this.richTextBox1);
-            this.groupBox2.Location = new System.Drawing.Point(276, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(282, 204);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Log";
+            this.logGroupBox.Controls.Add(this.downloadProgressBar);
+            this.logGroupBox.Controls.Add(this.logBox);
+            this.logGroupBox.Location = new System.Drawing.Point(276, 12);
+            this.logGroupBox.Name = "logGroupBox";
+            this.logGroupBox.Size = new System.Drawing.Size(282, 204);
+            this.logGroupBox.TabIndex = 14;
+            this.logGroupBox.TabStop = false;
+            this.logGroupBox.Text = "Log";
             // 
-            // progressBar1
+            // downloadProgressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(6, 173);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(270, 23);
-            this.progressBar1.TabIndex = 8;
+            this.downloadProgressBar.Location = new System.Drawing.Point(6, 173);
+            this.downloadProgressBar.Name = "downloadProgressBar";
+            this.downloadProgressBar.Size = new System.Drawing.Size(270, 23);
+            this.downloadProgressBar.TabIndex = 8;
             // 
-            // groupBox3
+            // controlGroupBox
             // 
-            this.groupBox3.Controls.Add(this.button5);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 150);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(258, 65);
-            this.groupBox3.TabIndex = 15;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Control";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            this.controlGroupBox.Controls.Add(this.button5);
+            this.controlGroupBox.Controls.Add(this.button1);
+            this.controlGroupBox.Controls.Add(this.button2);
+            this.controlGroupBox.Location = new System.Drawing.Point(12, 150);
+            this.controlGroupBox.Name = "controlGroupBox";
+            this.controlGroupBox.Size = new System.Drawing.Size(258, 65);
+            this.controlGroupBox.TabIndex = 15;
+            this.controlGroupBox.TabStop = false;
+            this.controlGroupBox.Text = "Control";
+            this.controlGroupBox.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(176, 18);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(78, 37);
             this.button5.TabIndex = 13;
@@ -288,19 +288,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 227);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.controlGroupBox);
+            this.Controls.Add(this.logGroupBox);
+            this.Controls.Add(this.settingsGroupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wallhaven.cc Downloader - Windows Edition";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.settingsGroupBox.ResumeLayout(false);
+            this.settingsGroupBox.PerformLayout();
+            this.logGroupBox.ResumeLayout(false);
+            this.controlGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -310,15 +310,15 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox logBox;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.GroupBox settingsGroupBox;
+        private System.Windows.Forms.GroupBox logGroupBox;
+        private System.Windows.Forms.GroupBox controlGroupBox;
+        private System.Windows.Forms.ProgressBar downloadProgressBar;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.CheckBox checkBox1;

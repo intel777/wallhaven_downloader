@@ -37,6 +37,7 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
         public Form1()
         {
             InitializeComponent();
+            update();
             comboBox1.SelectedIndex = 0;
             ToolTip t = new ToolTip();
             t.SetToolTip(button4, "Open destination folder");
@@ -47,8 +48,8 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
         }
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
-            richTextBox1.SelectionStart = richTextBox1.Text.Length;
-            richTextBox1.ScrollToCaret();
+            logBox.SelectionStart = logBox.Text.Length;
+            logBox.ScrollToCaret();
         }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
@@ -126,17 +127,22 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             }
             if (comboBox1.SelectedIndex == 3)
             {
-                richTextBox1.Text = richTextBox1.Text + "\nSelected random. Getting pictures amount...";
-                System.Net.WebClient wc = new System.Net.WebClient();
+                logBox.Text = logBox.Text + "\nSelected random. Getting pictures amount...";
                 try
                 {
-                    string webData = wc.DownloadString("http://intel777.esy.es/whwdl/dbsize.html");
-                    dbsize = Int32.Parse(webData);
-                    richTextBox1.Text = richTextBox1.Text + "\nPicture database size is: " + dbsize + " pictures.";
+                    System.Net.WebClient wc = new System.Net.WebClient();     
+                    string html = wc.DownloadString("https://alpha.wallhaven.cc/latest");
+                    CQ site_data = CQ.Create(html);
+                    foreach(IDomObject obj in site_data.Find("figure"))
+                    {
+                        dbsize = Int32.Parse(obj.GetAttribute("data-wallpaper-id").ToString());
+                        break;
+                    }
+                    conpush("\nPicture database size is: " + dbsize + " pictures.");
                 }
                 catch (Exception) {
-                    richTextBox1.Text = richTextBox1.Text + "\nError while connecting to server. Using local db size with 500000 elements.";
-                    dbsize = 500000;
+                    conpush("\nError while connecting to server. Using local db size with 600000 elements.");
+                    dbsize = 600000;
                 }
             }
         }
@@ -157,8 +163,8 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             if (FBD.ShowDialog() == DialogResult.OK)
             {
                 saveplace = FBD.SelectedPath;
-                string buffer = richTextBox1.Text;
-                richTextBox1.Text = buffer + "\nDestination folder selected: " + saveplace;
+                string buffer = logBox.Text;
+                logBox.Text = buffer + "\nDestination folder selected: " + saveplace;
             }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -178,7 +184,7 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
         delegate void RestoreControl();
         void restorecontrol()
         {
-            if (this.InvokeRequired || this.groupBox1.InvokeRequired)
+            if (this.InvokeRequired || this.settingsGroupBox.InvokeRequired)
             {
                 RestoreControl d = new RestoreControl(restorecontrol);
                 this.Invoke(d, new object[] { });
@@ -187,33 +193,33 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             {
                 this.Text = "Wallhaven.cc Downloader - Windows Edition";
                 this.ControlBox = true;
-                groupBox1.Enabled = true;
+                settingsGroupBox.Enabled = true;
             }
         }
         void progressbaradd()
         {
-            if(this.progressBar1.InvokeRequired)
+            if(this.downloadProgressBar.InvokeRequired)
             {
                 SetProgressbar d = new SetProgressbar(progressbaradd);
                 this.Invoke(d, new object[] { });
             }
             else
             {
-                progressBar1.PerformStep();
+                downloadProgressBar.PerformStep();
             }
         }
 
         void conpush(string text)
         {
-            if (this.richTextBox1.InvokeRequired)
+            if (this.logBox.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(conpush);
                 this.Invoke(d, new object[] { text });
             }
             else
             {
-                string conbuffer = richTextBox1.Text;
-                this.richTextBox1.Text = conbuffer + text;
+                string conbuffer = logBox.Text;
+                this.logBox.Text = conbuffer + text;
             }
         }
 
@@ -269,7 +275,7 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
             System.Net.WebClient wc = new System.Net.WebClient();
             string webData = wc.DownloadString("http://intel777.esy.es/whwdl/version.html");
             int curvers = Int32.Parse(webData);
-            conpush("\nYou version: " + version + "\nAvaliabe version: " + curvers);
+            conpush("\nYour version: " + version + "\nAvailable version: " + curvers);
             if (version < curvers)
             {
 
@@ -334,15 +340,15 @@ namespace Wallhaven.cc_Downloader___Windows_Edition
                 string title = this.Text;
                 this.Text = title + " ###WORKING###";
                 this.ControlBox = false;
-                groupBox1.Enabled = false;
+                settingsGroupBox.Enabled = false;
 
                 if (comboBox1.SelectedIndex != 1 && comboBox1.SelectedIndex != 2)
                 {
 
-                    progressBar1.Minimum = 0;
-                    progressBar1.Maximum = piccount;
-                    progressBar1.Step = 1;
-                    progressBar1.Value = 1;
+                    downloadProgressBar.Minimum = 0;
+                    downloadProgressBar.Maximum = piccount;
+                    downloadProgressBar.Step = 1;
+                    downloadProgressBar.Value = 1;
                 }
                 else
                 {
